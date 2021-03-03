@@ -54,15 +54,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyTheme {
-                MyApp(showDetail = {
-                    Intent(baseContext, DetailActivity::class.java).apply {
-                        this.putExtra("resId", it.resId)
-                        this.putExtra("detailDsc", it.detailDsc)
-                        this.putExtra("titleDsc", it.titleDsc)
-                    }.run {
-                        startActivity(this)
+                MyApp(
+                    showDetail = {
+                        Intent(baseContext, DetailActivity::class.java).apply {
+                            this.putExtra("resId", it.resId)
+                            this.putExtra("detailDsc", it.detailDsc)
+                            this.putExtra("titleDsc", it.titleDsc)
+                        }.run {
+                            startActivity(this)
+                        }
                     }
-                })
+                )
             }
         }
     }
@@ -176,15 +178,15 @@ fun DogList(dogs: List<DogEntity>, showDetail: (DogEntity) -> Unit) {
 fun DogListItem(dog: DogEntity, showDetail: (DogEntity) -> Unit) {
     val image = painterResource(id = dog.resId)
 
-
-
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp)
-            .clickable(onClick = {
-                showDetail(dog)
-            })
+            .clickable(
+                onClick = {
+                    showDetail(dog)
+                }
+            )
     ) {
         val imageModifier = Modifier
             .height(200.dp)
@@ -212,7 +214,7 @@ fun DogListItem(dog: DogEntity, showDetail: (DogEntity) -> Unit) {
                 overflow = TextOverflow.Ellipsis,
                 textAlign = TextAlign.Center,
 
-                )
+            )
 
             Spacer(modifier = Modifier.height(8.dp))
 
@@ -223,7 +225,7 @@ fun DogListItem(dog: DogEntity, showDetail: (DogEntity) -> Unit) {
                 overflow = TextOverflow.Ellipsis,
                 textAlign = TextAlign.Center,
 
-                )
+            )
 
             Spacer(modifier = Modifier.height(30.dp))
 
@@ -232,14 +234,15 @@ fun DogListItem(dog: DogEntity, showDetail: (DogEntity) -> Unit) {
                 textDogAdopt = "已收养"
             }
 
-            Button(onClick = {
-                dog.adopt = !dog.adopt
-            }, enabled = !dog.adopt) {
+            Button(
+                onClick = {
+                    dog.adopt = !dog.adopt
+                },
+                enabled = !dog.adopt
+            ) {
                 Text(text = textDogAdopt)
             }
-
         }
-
     }
 }
 
@@ -247,9 +250,10 @@ fun DogListItem(dog: DogEntity, showDetail: (DogEntity) -> Unit) {
 @Composable
 fun LightPreview() {
     MyTheme {
-        MyApp(showDetail = {
-
-        })
+        MyApp(
+            showDetail = {
+            }
+        )
     }
 }
 
@@ -257,8 +261,9 @@ fun LightPreview() {
 @Composable
 fun DarkPreview() {
     MyTheme(darkTheme = true) {
-        MyApp(showDetail = {
-
-        })
+        MyApp(
+            showDetail = {
+            }
+        )
     }
 }
