@@ -16,22 +16,27 @@
 package com.example.androiddevchallenge
 
 import android.os.Bundle
-
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-
 import com.example.androiddevchallenge.ui.theme.MyTheme
 import com.example.androiddevchallenge.ui.theme.typography
 
@@ -81,8 +86,10 @@ class DetailActivity : AppCompatActivity() {
                 .height(180.dp)
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(4.dp))
-            Image(image, "blackDog", modifier = imageModifier,
-                alignment = Alignment.Center, contentScale = ContentScale.Fit)
+            Image(
+                image, "blackDog", modifier = imageModifier,
+                alignment = Alignment.Center, contentScale = ContentScale.Fit
+            )
 
             Spacer(modifier = Modifier.height(20.dp))
 
